@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <IncludePath>$(SolutionDir)Dependencies/GLEW/include;$(SolutionDir)Dependencies/GLFW/WIN$(PlatformArchitecture)/include;$(SolutionDir)Dependencies/Soil/WIN$(PlatformArchitecture)/include;$(SolutionDir)include;$(SolutionDir)Dependencies/glm;$(SolutionDir)Dependencies/ASSIMP/WIN$(PlatformArchitecture)/include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)/Dependencies/GLEW/lib/Release/Win$(PlatformArchitecture);$(SolutionDir)/Dependencies/GLFW/WIN$(PlatformArchitecture)/lib;$(SolutionDir)/Dependencies/Soil/WIN$(PlatformArchitecture)/lib;$(SolutionDir)Dependencies/ASSIMP/WIN$(PlatformArchitecture)/lib;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(SolutionDir)src;$(SourcePath)</SourcePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>glfw3dll.lib;glew32.lib;opengl32.lib;SOIL.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy $(SolutionDir)Dependencies\GLEW\bin\Win$(PlatformArchitecture)\glew32.dll $(OutDir)
+copy $(SolutionDir)Dependencies\GLFW\WIN$(PlatformArchitecture)\lib\glfw3.dll $(OutDir)
+copy $(SolutionDir)Dependencies\ASSIMP\WIN$(PlatformArchitecture)\lib\assimp.dll $(OutDir)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>
